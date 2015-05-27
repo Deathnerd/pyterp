@@ -1,15 +1,8 @@
-from codecs import open as codecs_open
 from setuptools import setup, find_packages
 
-
-# Get the long description from the relevant file
-# with codecs_open('README.rst', encoding='utf-8') as f:
-#     long_description = f.read()
-
-
 setup(name='pyfck',
-      version='0.0.1',
-      description=u"A bare-bones Brainfuck interpreter written in Python 2.7",
+      version='0.1',
+      description=u"A bare-bones Brainfuck interpreter written in Python 2.7. It's guaranteed to have bugs",
       classifiers=[],
       keywords='brainfuck interpreter command-line',
       author=u"Wes Gilleland",

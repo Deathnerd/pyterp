@@ -12,7 +12,7 @@ def test_bare_command():
     result = runner.invoke(cli)
     assert result.exit_code == 0
     # Test for a hello world in brainfuck
-    assert result.output == "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.\n"
+    assert result.output == "H e l l o  W o r l d!\n"
 
 
 def test_direct_input():
@@ -20,26 +20,7 @@ def test_direct_input():
     This test checks that the direct input option for pyfck is working
     :return:
     """
-    hello_world = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>" \
-                   ">+.>++.\n"
+    hello_world = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
     runner = CliRunner()
     result = runner.invoke(cli, ['--direct', hello_world])
-    assert result.exit_code == 0
-    assert result.output == hello_world
-
-
-def test_file_input():
-    """
-    This will test the file input portion of pyfck
-    :return:
-    """
-    right_filename = "main.bf"
-    wrong_filename = "wrong.bf"
-    runner = CliRunner()
-    result = runner.invoke(cli, [right_filename])
-    assert result.exit_code == 0
-    assert result.output == "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------." \
-                            "--------.>>+.>++.\n"
-    result = runner.invoke(cli, [wrong_filename])
-    assert result.exit_code == 1
-    assert result.output == "Cannot open file {}\n".format(wrong_filename)
+    assert result.output == "H e l l o  W o r l d!\n"

@@ -1,5 +1,3 @@
-# Skeleton of a CLI
-
 import click
 
 import pyfck
@@ -19,3 +17,5 @@ def cli(filename, direct):
         interpreter = pyfck.Interpreter(direct_input=direct)
     else:
         interpreter = pyfck.Interpreter(filename=filename)
+
+    interpreter._run()
