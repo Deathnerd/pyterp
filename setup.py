@@ -1,3 +1,9 @@
+# Test for Python version 2 only
+import sys
+if not sys.version_info[0] == 2:
+    print "Sorry, but Python 3 isn't inherently supported yet"
+    sys.exit(1)
+
 from setuptools import setup, find_packages
 
 setup(name='pyfck',
@@ -8,6 +14,7 @@ setup(name='pyfck',
       author=u"Wes Gilleland",
       author_email='wes.gilleland@gmail.com',
       url='https://github.com/Deathnerd/pyfck',
+      download_url='https://github.com/Deathnerd/pyfck@master',
       license='MIT',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
