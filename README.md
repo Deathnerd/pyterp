@@ -1,5 +1,5 @@
 # pyfck
-A Brainfuck interpreter as a PyPi package
+A Brainfuck interpreter as a PyPi package. It's guaranteed to have bugs
 
 # Installation 
 `pip install git+https://github.com/Deathnerd/pyfck@master`
