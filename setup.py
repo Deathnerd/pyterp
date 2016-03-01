@@ -6,15 +6,15 @@ if not sys.version_info[0] == 2:
 
 from setuptools import setup, find_packages
 
-setup(name='pyfck',
+setup(name='pyterp',
       version='0.1',
-      description=u"A bare-bones Brainfuck interpreter written in Python 2.7. It's guaranteed to have bugs",
+      description=u"A bare-bones collection of interpreters written in Python 2.7. Currently only supports Brainfuck. It's guaranteed to have bugs",
       classifiers=[],
       keywords='brainfuck interpreter command-line',
       author=u"Wes Gilleland",
       author_email='wes.gilleland@gmail.com',
-      url='https://github.com/Deathnerd/pyfck',
-      download_url='https://github.com/Deathnerd/pyfck@master',
+      url='https://github.com/Deathnerd/pyterp',
+      download_url='https://github.com/Deathnerd/pyterp@master',
       license='MIT',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
@@ -27,6 +27,6 @@ setup(name='pyfck',
       },
       entry_points="""
       [console_scripts]
-      pyfck=pyfck.scripts.cli:cli
+      pyterp=pyterp.scripts.cli:cli
       """
       )
