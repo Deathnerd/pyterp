@@ -7,5 +7,5 @@ A collection of language interpreters as a PyPi package. It's guaranteed to have
 # Usage after installation
 `pyterp --help` for help
 `pyterp` in a directory to run a `main.[bf]` if it exists
-`pyterp foo.bf` to run source in `foo.bf`
-`pyterp --direct "<valid string here>"`
+`pyterp foo.[bf]` to run source in `foo.[bf]`
+`pyterp --direct "<valid string here>" --language [bf]`
