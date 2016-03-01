@@ -1,29 +1,32 @@
-import pyfck
+import pyterp
 
 
 def test_open_file():
     """
-    Test that pyfck is properly opening and parsing the given source file in the tests folder
+    Test that pyterp is properly opening and parsing the given source file in the tests folder
     :return:
     """
     the_file = "main.bf"
-    interpreter = pyfck.Interpreter(filename=the_file)
+    interpreter = pyterp.Brainfuck(filename=the_file)
     assert interpreter.source_file == the_file
-    assert interpreter.program == "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
+    assert interpreter.program == "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>--" \
+                                  "-.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
 
 
 def test_direct_input():
     """
-    Test that pyfck is properly parsing a direct input string
+    Test that pyterp is properly parsing a direct input brainfuck string
     :return:
     """
-    hello_brainfuck = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
-    interpreter = pyfck.Interpreter(direct_input=hello_brainfuck)
+    hello_brainfuck = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---." \
+                      "+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
+    interpreter = pyterp.Brainfuck(direct_input=hello_brainfuck)
     assert interpreter.program == hello_brainfuck
+
 
 def test_rot_13():
     filename = "rot13.bf"
-    interpreter = pyfck.Interpreter(filename=filename)
+    interpreter = pyterp.Brainfuck(filename=filename)
     print interpreter.program
 
 if __name__ == "__main__":

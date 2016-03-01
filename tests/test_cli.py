@@ -1,6 +1,6 @@
 from click.testing import CliRunner
 
-from pyfck.scripts.cli import cli
+from pyterp.scripts.cli import cli
 
 
 def test_bare_command():
@@ -20,7 +20,8 @@ def test_direct_input():
     This test checks that the direct input option for pyfck is working
     :return:
     """
-    hello_world = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
+    hello_world = "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>." \
+                  ">---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
     runner = CliRunner()
     result = runner.invoke(cli, ['--direct', hello_world])
     assert result.output == "H e l l o  W o r l d!\n"

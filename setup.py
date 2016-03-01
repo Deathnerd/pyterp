@@ -1,10 +1,10 @@
 # Test for Python version 2 only
 import sys
+from setuptools import setup, find_packages
+
 if not sys.version_info[0] == 2:
     print "Sorry, but Python 3 isn't inherently supported yet"
     sys.exit(1)
-
-from setuptools import setup, find_packages
 
 setup(name='pyterp',
       version='0.1',

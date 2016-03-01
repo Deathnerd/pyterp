@@ -1,24 +1,20 @@
-# pyfck
+# pyterp
 import os
 import re
 import sys
 
 
 class Interpreter(object):
-    operators = ['+', '-', ',', '.', '>', '<']
-    operators_regex = re.compile('[^\+><\[\],.-]')  # Select everything that's not an operator
-    pointer = 0
-    tape = [None for x in range(0, 30000)]  # Initialize the tape with null values
+    operators = []
+    operators_regex = None  # Select everything that's not an operator
     program = ""
     source_file = ""
-    MIN_CELL_SIZE = 0
-    MAX_CELL_SIZE = 255
 
     def __init__(self, filename="main.bf", direct_input=None):
         """
-        The heart of the beast. This is where all the logic lives for interpreting a Brainfuck program
+        The heart of the beast. This is where all the logic lives for interpreting a program
         :param filename: The file name to run. It will by default run main.bf
-        :param direct_input: Instead of a file to read, you can pass pyfck a string of Brainfuck here and it will run it
+        :param direct_input: Instead of a file to read, you can pass pyterp a string here and it will run it
         :return:
         """
         self.source_file = filename
@@ -37,6 +33,24 @@ class Interpreter(object):
         self._run()
 
     def _load_file(self, filename):
+        raise NotImplemented("_load_file not implemented for {}".format(self.__class__))
+
+    def _parse_program(self, source_string):
+        raise NotImplemented("_pare_program not implemented for {}".format(self.__class__))
+
+    def _run(self):
+        raise NotImplemented("_run not implemented for {}".format(self.__class__))
+
+
+class Brainfuck(Interpreter):
+    operators = ['+', '-', ',', '.', '>', '<']
+    operators_regex = re.compile('[^\+><\[\],.-]')  # Select everything that's not an operator
+    pointer = 0
+    tape = [None for x in range(0, 30000)]  # Initialize the tape with null values
+    MIN_CELL_SIZE = 0
+    MAX_CELL_SIZE = 255
+
+    def _load_file(self, filename):
         try:
             # Try to load the file
             read_file = os.path.realpath(os.path.join(os.curdir, filename))
@@ -44,11 +58,10 @@ class Interpreter(object):
                 temp_program = ""
                 for line in file:
                     temp_program += line.strip().replace(" ", "").replace("\n", "").replace("\r", "").replace("\t", "")
-        except IOError:
-            # Catch the file load error and exit gracefully
+
+        except IOError:  # Catch the file load error and exit gracefully
             print "Cannot open file {}".format(filename)
             sys.exit(1)
-
         return self._parse_program(temp_program)
 
     def _parse_program(self, source_string):
